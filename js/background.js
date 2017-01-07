@@ -53,7 +53,8 @@ var screenshot = {
   },
 
   showSelectionArea: function() {
-    screenshot.sendMessage({msg: 'show_selection_layer'}, null);
+    screenshot.sendMessage({msg: 'capture_selected_area'},
+        screenshot.onResponseVisibleSize);
   },
 
   captureSelected: function() {
