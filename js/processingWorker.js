@@ -1,6 +1,7 @@
 importScripts("GIFEncoder.js", "LZWEncoder.js", "NeuQuant.js");
 
 var images = [];
+var total_delay = 0;
 
 this.addEventListener('message', function(e) {
   var data = e.data;
@@ -17,6 +18,7 @@ this.addEventListener('message', function(e) {
         newImageData[i] = imageData[i];
       }
       images.push(newImageData);
+      total_delay += data.frame_delay;
       break;
 
     case 'process':
@@ -26,7 +28,7 @@ this.addEventListener('message', function(e) {
       var encoder = new GIFEncoder();
       encoder.setSize(width, height);
       encoder.setRepeat(0); //0  -> loop forever, 1+ -> loop n times then stop
-      encoder.setDelay(1000 / fps); //go to next frame every n milliseconds
+      encoder.setDelay(total_delay/images.length); //go to next frame every n milliseconds, averaging out the time it took us to take each frame
       encoder.start();
 
       for (var index = 0; index < images.length; index++) {

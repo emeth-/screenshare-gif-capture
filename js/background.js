@@ -111,6 +111,7 @@ var screenshot = {
     screenshot.processingWorker = new Worker("js/processingWorker.js");
     screenshot.isRecording = true;
 
+    var previous_screenshot_timestamp = new Date().getTime();
     // Set up a timer to regularly get screengrabs
     screenshot.timer = setInterval(function() {
       chrome.tabs.captureVisibleTab(null, {quality: screenshot.QUALITY}, function(imageData) {
@@ -130,7 +131,12 @@ var screenshot = {
               imarray.push(imageData[i]);
             }
             var serializedImageData = imarray.join(',');
-            screenshot.processingWorker.postMessage({'cmd': 'addImage', 'serializedImageData':serializedImageData });
+            console.log("add image attempt", new Date());
+            var screenshot_timestamp = new Date().getTime();
+            screenshot.processingWorker.postMessage({'cmd': 'addImage', 'serializedImageData':serializedImageData, 'frame_delay': screenshot_timestamp-previous_screenshot_timestamp });
+            previous_screenshot_timestamp = screenshot_timestamp;
+            console.log("add image complete", new Date());
+            console.log("---------");
           }
       });
     }, 1000 / screenshot.FPS);
