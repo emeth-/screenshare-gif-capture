@@ -19,10 +19,6 @@ Settings:
 Instalation:
 ------------
 
-### From the chrome web store:
-
-Go to [Super Gif Capture](https://chrome.google.com/webstore/detail/super-gif-capture/algmheobonijciecgfbapkhoonnhlnpe) in the Chrome web store and click install.
-
 ### From the source code:
 
 * Clone this repo
@@ -36,16 +32,18 @@ Credits:
 * For building the gif the extension uses the [jsgif library](https://github.com/antimatter15/jsgif)
 * The area selection is based on the code from [Chrome screen capture](https://code.google.com/p/chrome-screen-capture/)
 
-Extra notes:
+
+Emeth- notes:
 ------------
 
-* Developed in the fifth edition of ΠWEEK ([http://piweek.tumblr.com/](http://piweek.tumblr.com/), [http://piweek.es/](http://piweek.es/))
-* Feedback is wellcome! :)
+* chrome extension api call captureVisibleTab() unfortunately is not instant and takes variably 1-2 seconds, resulting in gifs that miss a lot of detail.
+* mouse position is not recorded (though perhaps could be simulated by injecting javascript that makes a fake mouse cursor image track your actual mouse position)
+* chrome inspector's overlayed above the website ARE included.
+* retina displays work with my patch
 
-Screenshots:
+Emeth- Takesaways:
 ------------
-![1](https://raw.github.com/superalex/super-gif-capture/master/screenshots/1.png)
 
-![1](https://raw.github.com/superalex/super-gif-capture/master/screenshots/2.png)
-
-![1](https://raw.github.com/superalex/super-gif-capture/master/screenshots/3.png)
+* Seems like it would work great for still images (could modify this gif repo for it, or here's a repo focused around stills: https://github.com/mrcoles/full-page-screen-capture-chrome-extension)
+* Gif quality is ok. The resulting gifs are pretty big though, not optimized. Also they have by necessity the 1-2 second delay, which is not smooth.
+* There is one other avenue that could be pursued for the chrome extension approach, which is a webRTC 'share desktop' stream kind of thing. Looks complicated. https://github.com/muaz-khan/WebRTC-Experiment/tree/master/Chrome-Extensions/desktopCapture
