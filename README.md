@@ -1,15 +1,14 @@
-Suger Gif Capture
+Screenshare Gif Capture
 =================
 
-Chrome plugin for generating easily and in a few clicks an animated gif from the selected content of a page. Sometimes a screenshot is not enough.
+Chrome plugin that takes a gif of your interactions with a web page when prompted.
 
 How it works:
 -------------
 
-* Push the extension button and choose the capture area
-* Wait until you are ready for generating the gif
-* Push the button again, now you will see the percentage process of the git generation over it.
-* When it finishes the extension will open a new tab showing the gif and allowing you to download it.
+* Push the extension button. The gif will immediately start being captured.
+* Push the extension button to stop the gif capture and render the gif (or wait the max length which defaults to 15 seconds).
+* Extension will then show a percentage as it works at rendering the gif. Once complete, it will open a page displaying the gif to you.
 
 Settings:
 ------------
