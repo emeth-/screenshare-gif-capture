@@ -40,7 +40,7 @@ Emeth- notes:
 * chrome inspector's overlayed above the website ARE included.
 * retina displays work with my patch
 
-Emeth- Takesaways:
+Emeth- Takeaways:
 ------------
 
 * Seems like it would work great for still images (could modify this gif repo for it, or here's a repo focused around stills: https://github.com/mrcoles/full-page-screen-capture-chrome-extension)
