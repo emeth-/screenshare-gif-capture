@@ -125,15 +125,9 @@ var screenshot = {
             image.src = imageData;
             ctx.drawImage(image, x, y, width, height, 0, 0, width, height);
             var imageData = ctx.getImageData(0, 0, width, height).data;
-            var imarray = [];
-
-            for(var i = 0; i < imageData.length; i++){
-              imarray.push(imageData[i]);
-            }
-            var serializedImageData = imarray.join(',');
             console.log("add image attempt", new Date());
             var screenshot_timestamp = new Date().getTime();
-            screenshot.processingWorker.postMessage({'cmd': 'addImage', 'serializedImageData':serializedImageData, 'frame_delay': screenshot_timestamp-previous_screenshot_timestamp });
+            screenshot.processingWorker.postMessage({'cmd': 'addImage', 'serializedImageData':imageData, 'frame_delay': screenshot_timestamp-previous_screenshot_timestamp });
             previous_screenshot_timestamp = screenshot_timestamp;
             console.log("add image complete", new Date());
             console.log("---------");

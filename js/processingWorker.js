@@ -11,13 +11,7 @@ this.addEventListener('message', function(e) {
       break;
 
     case 'addImage':
-      var serializedImageData = data.serializedImageData;
-      var imageData = serializedImageData.split(',');
-      var newImageData = new Uint8ClampedArray(serializedImageData.length);
-      for(var i = 0; i < imageData.length; i++){
-        newImageData[i] = imageData[i];
-      }
-      images.push(newImageData);
+      images.push(data.serializedImageData);
       total_delay += data.frame_delay;
       break;
 
