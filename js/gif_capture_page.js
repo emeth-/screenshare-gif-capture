@@ -110,8 +110,9 @@ var capturePage = {
             'docWidth': docWidth,
             'visibleWidth': viewPortSize.width,
             'visibleHeight': viewPortSize.height,
-            'canvasWidth': capturePage.calculateSizeAfterZooming(capturePage.endX - capturePage.startX),
-            'canvasHeight': capturePage.calculateSizeAfterZooming(capturePage.endY - capturePage.startY),
+            'devicePixelRatio': window.devicePixelRatio,
+            'canvasWidth': docWidth,
+            'canvasHeight': docHeight,
             'scrollXCount': 0,
             'scrollYCount': 0,
             'zoom': capturePage.getZoomLevel()

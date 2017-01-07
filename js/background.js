@@ -66,8 +66,8 @@ var screenshot = {
     screenshot.startY = response.startY,
     screenshot.scrollX = response.scrollX,
     screenshot.scrollY = response.scrollY,
-    screenshot.canvas.width = response.canvasWidth;
-    screenshot.canvas.height = response.canvasHeight;
+    screenshot.canvas.width = response.canvasWidth*response.devicePixelRatio;
+    screenshot.canvas.height = response.canvasHeight*response.devicePixelRatio;
     screenshot.visibleHeight = response.visibleHeight,
     screenshot.visibleWidth = response.visibleWidth,
     screenshot.scrollXCount = response.scrollXCount;
@@ -115,8 +115,8 @@ var screenshot = {
       chrome.tabs.captureVisibleTab(null, {quality: screenshot.QUALITY}, function(imageData) {
           if (imageData !== undefined){
             var ctx = screenshot.canvas.getContext("2d");
-            var x = screenshot.startX - screenshot.scrollX;
-            var y = screenshot.startY - screenshot.scrollY;
+            var x = 0;
+            var y = 0;
             var width = screenshot.canvas.width;
             var height = screenshot.canvas.height;
             var image = new Image();
